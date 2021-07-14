@@ -27,5 +27,4 @@ Outras funcionalidades extra que foram implementadas:
 
 ## Sobre o Autor
 
-
-<img src="https://logosmarcas.net/wp-content/uploads/2020/12/GitHub-Logo.png" style="width: 50px"><a href="https://github.com/renatogama99"/></img> Renato Gama, Estudante de Engenharia Informática <img src="https://github.com/renatogama99.png" style="width: 50px" />
+Renato Gama, estudante de Engenharia Informática.
