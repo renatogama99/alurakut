@@ -46,14 +46,29 @@ async function getFollowers(githubUser){
     );
 }
 
+async function getFollowing(githubUser){
+    return await axios.get(
+        `http://api.github.com/users/${githubUser}/following`
+    )
+}
+
 export default function Home() {
     const githubUser = 'renatogama99';
     const [follower, setFollower] = useState([]);
+    const [following, setFollowing] = useState([]);
 
     useEffect(async () =>{
         const response = await getFollowers(githubUser);
-        setFollower(response.data)
+        setFollower(response.data);
+        const responseFollowing = await getFollowing(githubUser);
+        setFollowing(responseFollowing.data);
     }, []);
+
+
+
+    useEffect(async () =>{
+
+    })
 
     const [comunidades, setComunidades] = React.useState([
         {
@@ -127,6 +142,10 @@ export default function Home() {
                   <ProfileRelationsBoxWrapper>
                       <h2 className="smallTitle">Pessoas da Comunidade ({follower.length})</h2>
                       <Cards array={follower} />
+                  </ProfileRelationsBoxWrapper>
+                  <ProfileRelationsBoxWrapper>
+                      <h2 className="smallTitle">Pessoas que eu sigo ({following.length})</h2>
+                      <Cards array={following} />
                   </ProfileRelationsBoxWrapper>
                   <ProfileRelationsBoxWrapper>
                       <h2 className="smallTitle">Comunidades ({comunidades.length})</h2>
