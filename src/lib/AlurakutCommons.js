@@ -54,7 +54,7 @@ export function AlurakutMenu({ githubUser }) {
 }
 AlurakutMenu.Wrapper = styled.header`
   width: 100%;
-  background-color: #308BC5;
+  background-color: #c53030;
 
   .alurakutMenuProfileSidebar {
     background: white;
@@ -66,19 +66,22 @@ AlurakutMenu.Wrapper = styled.header`
     right: 0;
     top: 48px;
     transition: .3s;
-    pointer-events: ${({ isMenuOpen }) => isMenuOpen ? 'all' : 'none'};
-    opacity: ${({ isMenuOpen }) => isMenuOpen ? '1' : '0'};
-    transform: ${({ isMenuOpen }) => isMenuOpen ? 'translateY(0)' : 'translateY(calc(-100% - 48px))'};
-    @media(min-width: 860px) {
+    pointer-events: ${({isMenuOpen}) => isMenuOpen ? 'all' : 'none'};
+    opacity: ${({isMenuOpen}) => isMenuOpen ? '1' : '0'};
+    transform: ${({isMenuOpen}) => isMenuOpen ? 'translateY(0)' : 'translateY(calc(-100% - 48px))'};
+    @media (min-width: 860px) {
       display: none;
     }
+
     > div {
       max-width: 400px;
       margin: auto;
     }
+
     a {
       font-size: 18px;
     }
+
     .boxLink {
       font-size: 18px;
       color: #2E7BB4;
@@ -96,7 +99,7 @@ AlurakutMenu.Wrapper = styled.header`
   }
 
   .container {
-    background-color: #308BC5;
+    background-color: #c53030;
     padding: 7px 16px;
     max-width: 1110px;
     margin: auto;
@@ -104,7 +107,7 @@ AlurakutMenu.Wrapper = styled.header`
     justify-content: space-between;
     position: relative;
     z-index: 101;
-    @media(min-width: 860px) {
+    @media (min-width: 860px) {
       justify-content: flex-start;
     }
 
@@ -113,25 +116,27 @@ AlurakutMenu.Wrapper = styled.header`
       background: transparent;
       align-self: center;
       display: inline-block;
-      @media(min-width: 860px) {
+      @media (min-width: 860px) {
         display: none;
       }
     }
 
     nav {
       display: none;
-      @media(min-width: 860px) {
+      @media (min-width: 860px) {
         display: flex;
       }
+
       a {
         font-size: 12px;
         color: white;
         padding: 10px 16px;
         position: relative;
         text-decoration: none;
+
         &:after {
           content: " ";
-          background-color: #5292C1;
+          background-color: #530909;
           display: block;
           position: absolute;
           width: 1px;
@@ -143,9 +148,10 @@ AlurakutMenu.Wrapper = styled.header`
         }
       }
     }
+
     input {
       color: #ffffff;
-      background: #5579A1;
+      background: #360000;
       padding: 10px 42px;
       border: 0;
       background-image: url(${`${BASE_URL}/icons/search.svg`});
@@ -153,11 +159,12 @@ AlurakutMenu.Wrapper = styled.header`
       background-repeat: no-repeat;
       border-radius: 1000px;
       font-size: 12px;
+
       ::placeholder {
         color: #ffffff;
         opacity: 1;
       }
-    } 
+    }
   }
 `;
 AlurakutMenu.Logo = styled.img`
