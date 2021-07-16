@@ -20,8 +20,8 @@ function ProfileSidebar(props){
         </Box>
     );
 }
-function Cards(props){
-    return(
+ function Cards(props){
+    return (
         <ul>
             {props.array.map((item, index) =>{
                 if(index < 6){
@@ -48,7 +48,7 @@ async function getFollowers(githubUser){
 
 async function getFollowing(githubUser){
     return await axios.get(
-        `http://api.github.com/users/${githubUser}/following`
+        `https://api.github.com/users/${githubUser}/following`
     )
 }
 
@@ -78,8 +78,8 @@ export default function Home() {
                 id
                 title
                 imageUrl
-                creatorSlut
                 communityLink
+                creatorSlut
                 }
             }`
             })
@@ -131,7 +131,6 @@ export default function Home() {
                                     const dados = await response.json();
                                     const comunidade = dados.registroCriado;
                                     setComunidades([...comunidades, comunidade]);
-                                    console.log(dados);
                                 })
 
                         }}>
