@@ -1,10 +1,12 @@
+import React from 'react';
+import axios from 'axios';
+import nookies from "nookies";
+import jwt from 'jsonwebtoken';
 import MainGrid from '../src/components/MainGrid'
 import Box from '../src/components/Box';
 import {AlurakutMenu, AlurakutProfileSidebarMenuDefault, OrkutNostalgicIconSet} from "../src/lib/AlurakutCommons";
 import {ProfileRelationsBoxWrapper} from "../src/components/ProfileRelations";
 import {useEffect, useState} from "react";
-import React from 'react';
-import axios from 'axios';
 
 function ProfileSidebar(props){
     return(
@@ -52,8 +54,8 @@ async function getFollowing(githubUser){
     )
 }
 
-export default function Home() {
-    const githubUser = 'renatogama99';
+export default function Home(props) {
+    const githubUser = props.githubUser;
     const [follower, setFollower] = useState([]);
     const [following, setFollowing] = useState([]);
     const [comunidades, setComunidades] = React.useState([]);
@@ -170,4 +172,34 @@ export default function Home() {
             </MainGrid>
         </>
     )
+}
+
+export async function getServerSideProps(context) {
+    const cookies = nookies.get(context);
+    const token = cookies.USER_TOKEN;
+
+    const { isAuthenticated } = await fetch('https://alurakut.vercel.app/api/auth', {
+        headers: {
+            Authorization: token
+        }
+    }) .then((resposta) => resposta.json())
+
+    console.log(isAuthenticated);
+
+    //Comentado por erro de API
+    if(!isAuthenticated){
+        return{
+            redirect: {
+                destination: '/login',
+                permanent: false
+            }
+        }
+    }
+
+    const {githubUser} = jwt.decode(token);
+    return {
+        props: {
+            githubUser
+        },
+    }
 }
